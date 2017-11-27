@@ -33,26 +33,34 @@ public class DBSeeder implements CommandLineRunner{
             f.read(b);
             Binary data = new Binary(b);
             Image image2 = new Image("image2");
+            image2.setText("image2 text");
             image2.setImage(data);
+            Wifi wifi23 = new Wifi("test1","test1",1);
+            Wifi wifi24 = new Wifi("test2","test2",2);
+            image2.setWifiList(Arrays.asList(wifi23,wifi24));
             f.close();
 
             Image image1 = new Image("image1");
+            image1.setText("image1 text");
             Wifi wifi1 = new Wifi("test1","test1",1);
             Wifi wifi2 = new Wifi("test2","test2",2);
             image1.setWifiList(Arrays.asList(wifi1,wifi2));
 
 
             Image image3 = new Image("image3");
+            image3.setText("image3 text");
             Wifi wifi21 = new Wifi("test31","test31",1);
             Wifi wifi22 = new Wifi("test32","test32",2);
             image3.setWifiList(Arrays.asList(wifi21,wifi22));
 
             Image image4 = new Image("image4");
+            image4.setText("image4 text");
             Wifi wifi41 = new Wifi("test41","test42",1);
             Wifi wifi42 = new Wifi("test42","test2",2);
             image4.setWifiList(Arrays.asList(wifi41,wifi42));
 
             Image image5 = new Image("image5");
+            image5.setText("image5 text");
             Wifi wifi51 = new Wifi("test5","test5",1);
             Wifi wifi52 = new Wifi("test51","test51",2);
             image5.setWifiList(Arrays.asList(wifi51,wifi52));

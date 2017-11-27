@@ -13,8 +13,8 @@ public class Image {
     private String id;
     private String name;
     private Binary image;
-
-    List<Wifi> wifiList;
+    private String text;
+    private List<Wifi> wifiList;
 
     public Image() {
     }
@@ -55,5 +55,11 @@ public class Image {
         this.wifiList = wifiList;
     }
 
+    public String getText() {
+        return text;
+    }
 
+    public void setText(String text) {
+        this.text = text;
+    }
 }
