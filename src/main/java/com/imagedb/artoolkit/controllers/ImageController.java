@@ -6,11 +6,18 @@ import com.imagedb.artoolkit.entity.Wifi;
 import com.imagedb.artoolkit.entity.requests.AddImageRequest;
 import com.imagedb.artoolkit.repositories.ImageRepository;
 import com.querydsl.core.types.dsl.BooleanExpression;
+import org.apache.commons.io.IOUtils;
 import org.bson.types.Binary;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Base64;
 import java.util.List;
 
@@ -33,10 +40,23 @@ public class ImageController {
         return images;
     }
 
+    @GetMapping(value = "/image", produces = MediaType.IMAGE_JPEG_VALUE)
+    public @ResponseBody byte[] getImage() throws IOException {
+        File imageFile = new File("testImages/image.jpg");
+        FileInputStream f = new FileInputStream(imageFile);
+        return IOUtils.toByteArray(f);
+    }
+
     @GetMapping("/getImageByID/{id}")
     public Image getImageByID(@PathVariable String id){
         Image image = this.imageRepository.findImageById(id);
         return image;
+    }
+
+    @GetMapping(value = "/getImageByIDimage/{id}",produces = MediaType.IMAGE_JPEG_VALUE )
+    public byte[]  getImageByIDimage(@PathVariable String id){
+        Image image = this.imageRepository.findImageById(id);
+        return image.getImage().getData();
     }
 
     @PostMapping("/getImagesByBssid")
@@ -54,6 +74,7 @@ public class ImageController {
             allImages.addAll(images);
         }
         return allImages;
+
     }
 
     @PostMapping("/getImagesIDsByBssid")

@@ -59,11 +59,13 @@ public class DBSeeder implements CommandLineRunner{
 
             this.imageRepository.deleteAll();
 
-            this.imageRepository.save(Arrays.asList(image1,image3,image4,image5));
+            this.imageRepository.save(Arrays.asList(image1,image2,image3,image4,image5));
         }catch (IOException e){
             e.printStackTrace();
         }
 
+        }
 
-    }
+
+
 }
