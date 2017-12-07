@@ -40,14 +40,14 @@ public class ImageController {
         List<Image> images = this.imageRepository.findAll();
         return images;
     }
-
+/*
     @GetMapping(value = "/image", produces = MediaType.IMAGE_JPEG_VALUE)
     public @ResponseBody byte[] getImage() throws IOException {
         File imageFile = new File("testImages/image.jpg");
         FileInputStream f = new FileInputStream(imageFile);
         return IOUtils.toByteArray(f);
     }
-
+*/
     @GetMapping("/getImageByID/{id}")
     public Image getImageByID(HttpServletRequest request, @PathVariable String id){
         Image image = this.imageRepository.findImageById(id);
@@ -107,6 +107,7 @@ public class ImageController {
             byte[] decodedString = Base64.getDecoder().decode(requestImage.getImage());
             Binary binary = new Binary(decodedString);
             image.setImage(binary);
+            image.setText(requestImage.getText());
             image.setWifiList(requestImage.getWifiList());
             this.imageRepository.insert(image);
 

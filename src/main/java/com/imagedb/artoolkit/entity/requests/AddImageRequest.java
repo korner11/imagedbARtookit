@@ -10,7 +10,7 @@ import java.util.List;
 public class AddImageRequest {
     private String name;
     private String image;
-
+    private String text;
     private List<Wifi> wifiList;
 
     public AddImageRequest() {
@@ -39,5 +39,13 @@ public class AddImageRequest {
 
     public void setWifiList(List<Wifi> wifiList) {
         this.wifiList = wifiList;
+    }
+
+    public String getText() {
+        return text;
+    }
+
+    public void setText(String text) {
+        this.text = text;
     }
 }
